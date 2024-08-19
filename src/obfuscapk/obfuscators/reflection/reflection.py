@@ -261,9 +261,9 @@ class Reflection(obfuscator_category.ICodeObfuscator):
 
         params = self.split_method_params(invoke_parameters)
 
-        param_to_register: List[
-            List[str]
-        ] = []  # list[i][0] = i-th param, list[i][1] = [i-th param register(s)]
+        param_to_register: List[List[str]] = (
+            []
+        )  # list[i][0] = i-th param, list[i][1] = [i-th param register(s)]
 
         if is_virtual_method:
             # If this is a virtual method, the first register is the object instance
@@ -615,14 +615,14 @@ class Reflection(obfuscator_category.ICodeObfuscator):
                                 )
 
                                 # Change the original code with code using reflection.
-                                lines[
-                                    current_line_number
-                                ] = self.create_reflection_method(
-                                    self.methods_with_reflection,
-                                    method_local_count[method_number],
-                                    tmp_is_virtual,
-                                    tmp_register,
-                                    tmp_param,
+                                lines[current_line_number] = (
+                                    self.create_reflection_method(
+                                        self.methods_with_reflection,
+                                        method_local_count[method_number],
+                                        tmp_is_virtual,
+                                        tmp_register,
+                                        tmp_param,
+                                    )
                                 )
 
                                 self.methods_with_reflection += 1
